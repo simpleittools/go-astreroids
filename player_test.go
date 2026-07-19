@@ -36,7 +36,7 @@ func TestRotationPerSecond(t *testing.T) {
 	}
 }
 
-func TestPlayerUodateDoesNotRotateWhenNoKeysPressed(t *testing.T) {
+func TestPlayerUpdateDoesNotRotateWhenNoKeysPressed(t *testing.T) {
 	player := &Player{
 		sprite: assets.PlayerSprite,
 		rotation: 1.5,

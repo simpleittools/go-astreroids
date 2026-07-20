@@ -7,23 +7,27 @@ import (
 	"simpleittools.com/go-asteroids/assets"
 )
 
-
 const (
 	rotationPerSecond = math.Pi
-	maxAcceleration = 8.0
+	maxAcceleration   = 8.0
 )
 
 // curAcceleration is how fast the player is going, and it will increase or decrease over time.
 var curAcceleration float64
+
+var (
+	isKeyPressed = ebiten.IsKeyPressed
+	tps          = ebiten.TPS
+)
+
 type Player struct {
 	sprite *ebiten.Image
 	// what is the rotation of the player sprite
-	rotation float64
-	game *Game
-	position Vector
+	rotation       float64
+	game           *Game
+	position       Vector
 	playerVelocity float64
 }
-
 
 func NewPlayer(game *Game) *Player {
 	sprite := assets.PlayerSprite
@@ -61,22 +65,22 @@ func (p *Player) Draw(screen *ebiten.Image) {
 // Update updates the player and must be called Update.
 func (p *Player) Update() {
 	// We want to rotate the image on the screen. ebiten.TPS is ticks per second. This determines how fast the player rotates.s
-	speed := rotationPerSecond / float64(ebiten.TPS())
+	speed := rotationPerSecond / float64(tps())
 
 	// rotate the player sprite when the player presses the left arrow key
-	if ebiten.IsKeyPressed(ebiten.KeyLeft) {
+	if isKeyPressed(ebiten.KeyLeft) {
 		p.rotation -= speed
 	}
 
-	if ebiten.IsKeyPressed(ebiten.KeyRight) {
+	if isKeyPressed(ebiten.KeyRight) {
 		p.rotation += speed
 	}
 
 	p.accelerate()
 }
 
-func (p *Player) accelerate(){
-	if ebiten.IsKeyPressed(ebiten.KeyUp) {
+func (p *Player) accelerate() {
+	if isKeyPressed(ebiten.KeyUp) {
 		// perform a gradual increase in acceleration
 		if curAcceleration < maxAcceleration {
 			curAcceleration = p.playerVelocity + 4

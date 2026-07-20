@@ -25,6 +25,8 @@ func main() {
 	g := &Game{
 
 	}
+	ebiten.SetWindowTitle("Go Asteroids")
+	ebiten.SetWindowSize(ScreenWidth, ScreenHeight)
 
 	g.player = NewPlayer(g)
 

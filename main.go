@@ -1,9 +1,12 @@
 package main
 
-import "github.com/hajimehoshi/ebiten/v2"
+import (
+	"github.com/hajimehoshi/ebiten/v2"
+	"simpleittools.com/go-asteroids/goasteroids"
+)
 
 type Game struct {
-	player *Player
+	player *goasteroids.Player
 
 }
 
@@ -26,9 +29,9 @@ func main() {
 
 	}
 	ebiten.SetWindowTitle("Go Asteroids")
-	ebiten.SetWindowSize(ScreenWidth, ScreenHeight)
+	ebiten.SetWindowSize(goasteroids.ScreenWidth, goasteroids.ScreenHeight)
 
-	g.player = NewPlayer(g)
+	g.player = goasteroids.NewPlayer(g)
 
 	err := ebiten.RunGame(g)
 	if err != nil {

@@ -1,10 +1,11 @@
-package main
+package goasteroids
 
 import (
 	"math"
 	"testing"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"simpleittools.com/go-asteroids"
 	"simpleittools.com/go-asteroids/assets"
 )
 
@@ -31,7 +32,7 @@ func withPlayerInputStub(t *testing.T, pressed map[ebiten.Key]bool, ticksPerSeco
 }
 
 func TestNewPlayer(t *testing.T) {
-	game := &Game{}
+	game := &main.Game{}
 
 	player := NewPlayer(game)
 

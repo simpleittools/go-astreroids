@@ -1,4 +1,4 @@
-package main
+package goasteroids
 
 import (
 	"math"
@@ -28,12 +28,12 @@ type Player struct {
 	sprite *ebiten.Image
 	// what is the rotation of the player sprite
 	rotation       float64
-	game           *Game
+	game           *main.Game
 	position       Vector
 	playerVelocity float64
 }
 
-func NewPlayer(game *Game) *Player {
+func NewPlayer(game *main.Game) *Player {
 	sprite := assets.PlayerSprite
 
 	// center player on the screen
